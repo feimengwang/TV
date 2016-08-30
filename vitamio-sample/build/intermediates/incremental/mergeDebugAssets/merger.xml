@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="unspecified"><source path="C:\Users\IBM_ADMIN\Downloads\TV\vitamio-sample\build\intermediates\exploded-aar\TV\vitamio\unspecified\assets"/></dataSet><dataSet config="main"><source path="C:\Users\IBM_ADMIN\Downloads\TV\vitamio-sample\src\main\assets"/><source path="C:\Users\IBM_ADMIN\Downloads\TV\vitamio-sample\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\IBM_ADMIN\Downloads\TV\vitamio-sample\src\debug\assets"/></dataSet></merger>

@@ -414,6 +414,7 @@ public class VideoView extends SurfaceView implements MediaController.MediaPlaye
   private void openVideo() {
 //    if (mUri == null || mSurfaceHolder == null || !Vitamio.isInitialized(mContext))
 //      return;
+      android.util.Log.i("Video", "openVideo: +"+mUri+";"+mSurfaceHolder);
     if (mUri == null || mSurfaceHolder == null )
     return;
     Intent i = new Intent("com.android.music.musicservicecommand");
@@ -494,7 +495,7 @@ public class VideoView extends SurfaceView implements MediaController.MediaPlaye
   }
 
   public void setOnErrorListener(OnErrorListener l) {
-    mOnErrorListener = l;
+      mOnErrorListener = l;
   }
 
   public void setOnBufferingUpdateListener(OnBufferingUpdateListener l) {
