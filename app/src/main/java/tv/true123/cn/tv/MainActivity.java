@@ -13,6 +13,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -20,16 +22,17 @@ import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
     static final String TAG = "MainActivity";
+    @BindView(R.id.list)
     ListView listView;
     TVAdapter tvAdapter;
+    @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Util.clear(this);
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        ButterKnife.bind(this);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -41,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         });
         swipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED);
         swipeRefreshLayout.setRefreshing(true);
-        listView = (ListView) findViewById(R.id.list);
         final List list = new ArrayList();//Util.getTV(this);
         tvAdapter = new TVAdapter(this, list);
         listView.setAdapter(tvAdapter);
