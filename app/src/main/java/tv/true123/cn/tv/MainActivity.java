@@ -1,8 +1,11 @@
 package tv.true123.cn.tv;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,14 +19,28 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
+    static final String TAG = "MainActivity";
     ListView listView;
     TVAdapter tvAdapter;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Util.clear(this);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i(TAG, "onRefresh: ");
+
+                readData();
+
+            }
+        });
+        swipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED);
+        swipeRefreshLayout.setRefreshing(true);
         listView = (ListView) findViewById(R.id.list);
         final List list = new ArrayList();//Util.getTV(this);
         tvAdapter = new TVAdapter(this, list);
@@ -59,18 +76,19 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Subscriber<List>() {
                     @Override
                     public void onCompleted() {
-
+                        swipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        swipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onNext(List list) {
                         tvAdapter.updateList(list);
                         tvAdapter.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(false);
                     }
                 });
     }

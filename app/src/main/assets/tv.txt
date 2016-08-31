@@ -1,4 +1,3 @@
-CCTV-1,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_cctv1/z.m3u8
 CCTV-5,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_cctv5/z.m3u8
 江苏卫视,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_jsws/z.m3u8
 安徽卫视,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_ahws/z.m3u8
@@ -58,7 +57,6 @@ CCTV-5,http://220.194.207.26/livehls1-cnc.wasu.cn/hd_cctv5/z.m3u8
 求索科学,http://220.194.207.26/padlive1-cnc.wasu.cn/hd_qspd/z.m3u8
 上海纪实,http://220.194.207.26/livehls1-cnc.wasu.cn/shjs/z.m3u8
 北京纪实,http://220.194.207.26/livehls1-cnc.wasu.cn/bjjs/z.m3u8
-CCTV-1,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_cctv1/z.m3u8
 CCTV-5,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_cctv5/z.m3u8
 江苏卫视,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_jsws/z.m3u8
 安徽卫视,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_ahws/z.m3u8
@@ -3054,7 +3052,6 @@ CCTV-6,http://ltewap2.tv189.com/tm-cctv6hd-800k.m3u8
 CCTV-8,http://ltewap2.tv189.com/tm-cctv8hd-800k.m3u8
 湖南卫视,http://ltewap2.tv189.com/tm-hunanhd-800k.m3u8
 浙江卫视,http://ltewap2.tv189.com/tm-zhejianghd-800k.m3u8
-CCTV-1,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_cctv1/z.m3u8
 CCTV-5,http://112.253.38.62:80/livehls1-cnc.wasu.cn/hd_cctv5/z.m3u8
 上海纪实,http://112.253.38.62:80/livehls1-cnc.wasu.cn/shjs/z.m3u8
 北京纪实,http://112.253.38.62:80/livehls1-cnc.wasu.cn/bjjs/z.m3u8

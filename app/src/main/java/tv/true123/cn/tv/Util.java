@@ -2,6 +2,7 @@ package tv.true123.cn.tv;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +23,7 @@ public class Util {
     static SharedPreferences sharedPreferences;
 
     public static List getTV(Context context) {
+        Log.i(TAG, "getTV: ");
         List<TV> list = new ArrayList<TV>();
         try {
             InputStream inputStream = context.getAssets().open("tv.txt");
@@ -56,6 +58,7 @@ public class Util {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Log.i(TAG, "list: "+list);
         List<TV> copy=new ArrayList<TV>(list);
         Collections.copy(copy,list);
         for(TV tv:copy){
@@ -74,7 +77,7 @@ public class Util {
                 return tv.getIndex() - t1.getIndex();
             }
         });
-
+        Log.i(TAG, "list="+list);
         return list;
     }
 
