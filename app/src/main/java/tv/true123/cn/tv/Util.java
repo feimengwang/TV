@@ -13,14 +13,39 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by junbo on 25/8/2016.
  */
 public class Util {
-    static String TAG="Util";
+    static String TAG = "Util";
     static SharedPreferences sharedPreferences;
+    static String[] group = {"中央台","地方卫视","其他"};
+    public static Map getMapTV(List<TV> list){
+        Map<String,List<TV>> map = new HashMap();
+        map.put( group[0],new ArrayList<TV>());
+        map.put( group[1],new ArrayList<TV>());
+        map.put(group[2] ,new ArrayList<TV>());
+        if(list!=null && list.size()>0){
+            Iterator<TV> it = list.iterator();
+            while(it.hasNext()){
+                TV tv = it.next();
+                if(tv.getName().contains("CCTV") || tv.getName().contains("cctv")) {
+                    map.get(group[0]).add(tv);
+                }else if(tv.getName().contains("卫视")){
+                    map.get(group[1]).add(tv);
+                }else{
+                    map.get(group[2]).add(tv);
+                }
+            }
+        }
+
+        return map;
+    }
 
     public static List getTV(Context context) {
         Log.i(TAG, "getTV: ");
@@ -40,16 +65,16 @@ public class Util {
                 int indexOf = list.indexOf(tv);
                 if (indexOf >= 0) {
                     tv = list.get(indexOf);
-                    if("".equals(getInvalidUrl(context,s[1]))){
+                    if ("".equals(getInvalidUrl(context, s[1]))) {
                         tv.addUrl(s[1]);
                     }
 
                     //tv.setIndex(getIndex(context,s[0]));
                 } else {
-                    if("".equals(getInvalidUrl(context,s[1]))){
+                    if ("".equals(getInvalidUrl(context, s[1]))) {
                         tv.addUrl(s[1]);
                     }
-                   // tv.setIndex(getIndex(context,s[0]));
+                    // tv.setIndex(getIndex(context,s[0]));
                     list.add(tv);
                 }
 
@@ -58,11 +83,11 @@ public class Util {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.i(TAG, "list: "+list);
-        List<TV> copy=new ArrayList<TV>(list);
-        Collections.copy(copy,list);
-        for(TV tv:copy){
-            if(tv.getUrls()==null || tv.getUrls().size()==0){
+        Log.i(TAG, "list: " + list);
+        List<TV> copy = new ArrayList<TV>(list);
+        Collections.copy(copy, list);
+        for (TV tv : copy) {
+            if (tv.getUrls() == null || tv.getUrls().size() == 0) {
                 list.remove(tv);
             }
         }
@@ -77,7 +102,7 @@ public class Util {
                 return tv.getIndex() - t1.getIndex();
             }
         });
-        Log.i(TAG, "list="+list);
+        Log.i(TAG, "list=" + list);
         return list;
     }
 
@@ -90,13 +115,14 @@ public class Util {
     }
 
 
-    public static void updateInvalidUrl(Context context,String url){
+    public static void updateInvalidUrl(Context context, String url) {
         if (sharedPreferences == null) {
             sharedPreferences = context.getSharedPreferences("tv", Context.MODE_PRIVATE);
         }
-        sharedPreferences.edit().putString(MD5(url),"invalid").commit();
+        sharedPreferences.edit().putString(MD5(url), "invalid").commit();
     }
-    public static void clear(Context context){
+
+    public static void clear(Context context) {
         if (sharedPreferences == null) {
             sharedPreferences = context.getSharedPreferences("tv", Context.MODE_PRIVATE);
         }

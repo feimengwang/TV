@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">电视直播</string>
+    <string name="cctv">中央台</string>
 </resources>
