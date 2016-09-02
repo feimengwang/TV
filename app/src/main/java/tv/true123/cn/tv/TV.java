@@ -65,8 +65,9 @@ public class TV implements Comparator, Parcelable {
     public void setName(String name) {
         this.name = name;
     }
-    public void addUrl(String surl){
-        if(this.urls==null) this.urls=new ArrayList();
+
+    public void addUrl(String surl) {
+        if (this.urls == null) this.urls = new ArrayList();
         this.urls.add(surl);
     }
 

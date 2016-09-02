@@ -25,6 +25,8 @@ public class Util {
     static String TAG = "Util";
     static SharedPreferences sharedPreferences;
     static String[] group = {"中央台","地方卫视","其他"};
+
+
     public static Map getMapTV(List<TV> list){
         Map<String,List<TV>> map = new HashMap();
         map.put( group[0],new ArrayList<TV>());
@@ -69,12 +71,10 @@ public class Util {
                         tv.addUrl(s[1]);
                     }
 
-                    //tv.setIndex(getIndex(context,s[0]));
                 } else {
                     if ("".equals(getInvalidUrl(context, s[1]))) {
                         tv.addUrl(s[1]);
                     }
-                    // tv.setIndex(getIndex(context,s[0]));
                     list.add(tv);
                 }
 

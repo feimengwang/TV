@@ -21,10 +21,12 @@ public class TVAdapter extends BaseAdapter {
         this.context = context;
         this.list = list;
     }
-    public void updateList(List up){
+
+    public void updateList(List up) {
         this.list.clear();
         this.list.addAll(up);
     }
+
     @Override
     public int getCount() {
         return list.size();

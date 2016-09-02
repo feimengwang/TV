@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        setListener();
+        readData();
+    }
+
+    private void setListener() {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -100,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        readData();
     }
 
     public void readData() {
@@ -130,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onNext(Map list) {
                         map = list;
-//                        tvAdapter.updateList(list);
-//                        tvAdapter.notifyDataSetChanged();
                         update();
                         swipeRefreshLayout.setRefreshing(false);
                     }
@@ -142,13 +144,13 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "update: " + map);
         group = new String[map.keySet().size()];
         Iterator<String> it = map.keySet().iterator();
-        int i=0;
-        while (it.hasNext()){
+        int i = 0;
+        while (it.hasNext()) {
             String key = it.next();
-            group[i]=key;
+            group[i] = key;
             i++;
         }
-        Log.i(TAG, "update: "+group);
+        Log.i(TAG, "update: " + group);
         groupAdapter.updateList(group);
         groupAdapter.notifyDataSetChanged();
         groupAdapter.setSelection(0);

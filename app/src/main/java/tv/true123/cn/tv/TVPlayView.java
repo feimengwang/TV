@@ -27,8 +27,8 @@ public class TVPlayView extends Activity {
     private AudioManager audioManager;
     private int currentLayout = 0;
     private CircularProgressBar progressBar;
-    private  List list;
-    private int index=-1;
+    private List list;
+    private int index = -1;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -45,8 +45,8 @@ public class TVPlayView extends Activity {
         mVideoView = (io.vov.vitamio.widget.VideoView) findViewById(R.id.surface_view);
         mVideoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);
         Bundle bundle = getIntent().getExtras();
-         list = bundle.getStringArrayList("url");
-        Log.i(TAG,"list="+list);
+        list = bundle.getStringArrayList("url");
+        Log.i(TAG, "list=" + list);
 
         Log.i(TAG, "onCreate: " + path);
         next();
@@ -93,7 +93,7 @@ public class TVPlayView extends Activity {
             public boolean onError(MediaPlayer mp, int what, int extra) {
                 Log.e(TAG, "onError: " + extra);
                 Toast.makeText(TVPlayView.this, "无法播放！", Toast.LENGTH_SHORT).show();
-                Util.updateInvalidUrl(TVPlayView.this,path);
+                Util.updateInvalidUrl(TVPlayView.this, path);
                 next();
                 return true;
             }
@@ -107,20 +107,23 @@ public class TVPlayView extends Activity {
         });
 
     }
-    private void next(){
+
+    private void next() {
         index++;
-        if(list!=null && list.size()>index){
-             path = (String) list.get(index);
-            Log.i(TAG, "next: ="+path);
+        if (list != null && list.size() > index) {
+            path = (String) list.get(index);
+            Log.i(TAG, "next: =" + path);
             setPath(path);
             return;
         }
-       finish();
+        finish();
     }
-   private void setPath(String path){
-       mVideoView.setVideoPath(path);
-       buffering(true);
-   }
+
+    private void setPath(String path) {
+        mVideoView.setVideoPath(path);
+        buffering(true);
+    }
+
     private void buffering(boolean showing) {
         Log.i(TAG, "buffering: =" + mVideoView.isBuffering());
         Log.i(TAG, "buffering: =" + mVideoView.isPlaying());
