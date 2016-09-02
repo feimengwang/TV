@@ -22,8 +22,8 @@ public class TVPlayView extends Activity {
     private String path = "";
     private io.vov.vitamio.widget.VideoView mVideoView;
     private long mPosition = 0;
-    private int maxAudioVolume;
-    private int currentAudioVolume;
+//    private int maxAudioVolume;
+//    private int currentAudioVolume;
     private AudioManager audioManager;
     private int currentLayout = 0;
     private CircularProgressBar progressBar;
@@ -36,8 +36,8 @@ public class TVPlayView extends Activity {
         Boolean init = Vitamio.isInitialized(getApplicationContext());
         Log.i(TAG, "onCreate: init=" + init);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        maxAudioVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        currentAudioVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+//        maxAudioVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+//        currentAudioVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
 
         setContentView(R.layout.videoview);
@@ -50,10 +50,7 @@ public class TVPlayView extends Activity {
 
         Log.i(TAG, "onCreate: " + path);
         next();
-        // mVideoView.setMediaController(new MediaController(this));
-
         mVideoView.requestFocus();
-        // mVideoView.setVideoLayout(0, 0);
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
@@ -192,6 +189,4 @@ public class TVPlayView extends Activity {
 
         mVideoView.start();
     }
-
-
 }
